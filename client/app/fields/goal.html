@@ -1,0 +1,8 @@
+<h2>Jugador {{ jugador.nombre }}</h2>
+
+<h3>Goles: {{jugador.goals.length}} / <span ng-repeat="goal in jugador.goals">{{goal.minuto}}', </span></h3>
+<h3>Sanciones {{jugador.cards.length}} / <span ng-repeat="card in jugador.cards">{{card.tipo}}</span></h3>
+
+<input type="text" name="name" value="" ng-model="gol.minuto">
+<button type="button" name="button" ng-click="addGol()">Añadir gol</button>
+<button type="button" name="button" ng-click="addCard()">Añadir tarjeta</button>

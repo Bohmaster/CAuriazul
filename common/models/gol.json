@@ -1,0 +1,30 @@
+{
+  "name": "Gol",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "minuto": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "partido": {
+      "type": "belongsTo",
+      "model": "Partido"
+    },
+    "jugador": {
+      "type": "belongsTo",
+      "model": "Jugador"
+    }
+  },
+  "scope": {
+    "include": "jugador"
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,50 @@
+{
+  "ids": {
+    "User": 1,
+    "AccessToken": 1,
+    "ACL": 1,
+    "RoleMapping": 1,
+    "Role": 1,
+    "Fecha": 3,
+    "Partido": 3,
+    "Equipo": 4,
+    "Jugador": 3,
+    "Gol": 6,
+    "Tarjeta": 3
+  },
+  "models": {
+    "User": {},
+    "AccessToken": {},
+    "ACL": {},
+    "RoleMapping": {},
+    "Role": {},
+    "Fecha": {
+      "1": "{\"numero\":\"1\",\"id\":1}",
+      "2": "{\"numero\":\"2\",\"id\":2}"
+    },
+    "Partido": {
+      "1": "{\"dia\":\"2016-05-20T00:00:00.000Z\",\"resultadoLocal\":1,\"resultadoVisitante\":0,\"terminado\":true,\"localId\":1,\"visitanteId\":2,\"id\":1}",
+      "2": "{\"dia\":\"2016-05-25T00:00:00.000Z\",\"resultadoLocal\":2,\"resultadoVisitante\":2,\"terminado\":true,\"localId\":1,\"visitanteId\":3,\"id\":2}"
+    },
+    "Equipo": {
+      "1": "{\"nombre\":\"Rosario Central\",\"puntos\":4,\"id\":1,\"jugados\":2}",
+      "2": "{\"nombre\":\"Newells Old Boys\",\"puntos\":null,\"id\":2,\"jugados\":null}",
+      "3": "{\"nombre\":\"Lo Celso FC\",\"puntos\":4,\"id\":3,\"jugados\":1}"
+    },
+    "Jugador": {
+      "1": "{\"nombre\":\"Ramiro Trovant\",\"nombreEquipo\":\"Rosario Central\",\"equipoId\":1,\"id\":1}",
+      "2": "{\"nombre\":\"Virginia Trovant\",\"nombreEquipo\":\"Lo Celso FC\",\"equipoId\":3,\"id\":2}"
+    },
+    "Gol": {
+      "1": "{\"minuto\":\"3\",\"partidoId\":1,\"jugadorId\":1,\"id\":1}",
+      "2": "{\"minuto\":\"15\",\"partidoId\":2,\"jugadorId\":1,\"id\":2}",
+      "3": "{\"minuto\":\"23\",\"partidoId\":2,\"jugadorId\":2,\"id\":3}",
+      "4": "{\"minuto\":\"55\",\"partidoId\":2,\"jugadorId\":2,\"id\":4}",
+      "5": "{\"minuto\":\"33\",\"partidoId\":2,\"jugadorId\":1,\"id\":5}"
+    },
+    "Tarjeta": {
+      "1": "{\"tipo\":\"amarilla\",\"partidoId\":1,\"jugadorId\":1,\"id\":1}",
+      "2": "{\"tipo\":\"amarilla\",\"partidoId\":2,\"jugadorId\":1,\"id\":2}"
+    }
+  }
+}

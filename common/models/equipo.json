@@ -1,0 +1,36 @@
+{
+  "name": "Equipo",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nombre": {
+      "type": "string"
+    },
+    "jugados": {
+      "type": "number"
+    },
+    "puntos": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "partidos": {
+      "type": "hasMany",
+      "model": "Partido"
+    },
+    "jugadores": {
+      "type": "hasMany",
+      "model": "Jugador"
+    }
+  },
+  "scope": {
+    "include": "jugadores"
+  },
+  "acls": [],
+  "methods": {}
+}

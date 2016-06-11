@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>My First Admin</title>
+    <link rel="stylesheet" href="ng-admin/build/ng-admin.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body ng-app="myApp">
+    <div ui-view></div>
+
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="ng-admin/build/ng-admin.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script type="text/javascript">
+    var myApp = angular.module('myApp', ['ng-admin', 'ui.bootstrap', 'lbServices', 'ngResource']);
+    myApp.config(['NgAdminConfigurationProvider', function(NgAdminConfigurationProvider) {
+        var nga = NgAdminConfigurationProvider;
+
+        // create an admin application
+        var admin = nga.application('Administrador Torneo Carnaval Auriazul')
+          .debug(true)
+          .baseApiUrl('http://localhost:3000/api/');
+
+        admin.header('<img src="app/images/logo.png" width="100" style="display: inline; margin:  10px;"></img><h1 style="display: inline;">Administrador Torneo Carnaval Auriazul</h1>');
+
+        // more configuration here later
+        var team = nga.entity('equipos');
+        var player = nga.entity('jugadors');
+        var match = nga.entity('partidos');
+        var fecha = nga.entity('fechas');
+        var goles = nga.entity('gols');
+        var tarjetas = nga.entity('tarjetas');
+
+        goles.listView()
+          .fields([
+            nga.field('minuto', 'text'),
+            nga.field('jugadorId', 'reference')
+              .targetEntity(player)
+              .targetField(nga.field('nombre')),
+            nga.field('partidoId', 'reference')
+                .targetEntity(match)
+                .targetField(nga.field('dia', 'date'))
+          ]);
+
+        tarjetas.listView()
+            .fields([
+              nga.field('tipo', 'text')
+            ]);
+
+        fecha.listView()
+          .fields([
+            nga.field('numero', 'text')
+          ]);
+
+          fecha.creationView()
+            .fields([
+              nga.field('numero', 'text')
+            ]);
+
+        player.listView()
+            .fields([
+              nga.field('nombre', 'text'),
+              nga.field('equipoId', 'reference')
+                .targetEntity(team)
+                .targetField(nga.field('nombre'))
+            ])
+
+            player.creationView()
+                .fields([
+                  nga.field('nombre', 'text'),
+                  nga.field('equipoId', 'reference')
+                    .targetEntity(team)
+                    .targetField(nga.field('nombre'))
+                ])
+
+        team.listView()
+          .title('Lista de Equipos')
+          .fields([
+            nga.field('nombre', 'text').isDetailLink(true),
+            nga.field('puntos', 'number')
+          ])
+
+        team.editionView()
+          .title('Equipo')
+          .fields([
+            nga.field('nombre', 'text'),
+            nga.field('puntos', 'number'),
+            nga.field('jugadores', 'reference_many')
+              .label('Jugadores')
+              .targetEntity(player)
+              .targetField(nga.field('nombre'))
+          ])
+
+          team.creationView()
+            .title('Equipo')
+            .fields([
+              nga.field('nombre', 'text'),
+              nga.field('puntos', 'number'),
+              nga.field('jugadores', 'reference_many')
+                .label('Jugadores')
+                .targetEntity(player)
+                .targetField(nga.field('nombre'))
+            ])
+
+        match.creationView()
+            .title('Crear partido')
+            .fields([
+              nga.field('dia', 'date'),
+              nga.field('localId', 'reference')
+                .targetEntity(team)
+                .targetField(nga.field('nombre')),
+              nga.field('visitanteId', 'reference')
+                  .targetEntity(team)
+                  .targetField(nga.field('nombre'))
+            ]);
+
+            match.listView()
+                .title('Crear partido')
+                .fields([
+                  nga.field('dia', 'date').isDetailLink(true),
+                  nga.field('localId', 'reference')
+                    .label('Local')
+                    .targetEntity(team)
+                    .targetField(nga.field('nombre')),
+                  nga.field('resultadoLocal', 'number')
+                    .label(''),
+                  nga.field('visitanteId', 'reference')
+                    .label('Visitante')
+                    .targetEntity(team)
+                    .targetField(nga.field('nombre')),
+                  nga.field('resultadoVisitante', 'number')
+                    .label(''),
+                  nga.field('terminado', 'boolean'),
+                  nga.field('fechaId', 'reference')
+                      .label('Fecha')
+                      .targetEntity(fecha)
+                      .targetField(nga.field('numero'))
+                ]);
+
+                match.editionView()
+                    .title('Editar partido')
+                    .fields([
+                      nga.field('dia', 'date'),
+                      nga.field('terminado', 'boolean'),
+                      nga.field('Finalizar', 'template')
+                        .template('<finalizar></finalizar>')
+                        .label('Finalizar'),
+                      nga.field('localId', 'reference')
+                        .targetEntity(team)
+                        .targetField(nga.field('nombre')),
+                      nga.field('visitanteId', 'reference')
+                          .targetEntity(team)
+                          .targetField(nga.field('nombre')),
+                      nga.field('jugadores', 'template')
+                            .label('Detalles del partido')
+                            .template('<jugadores></jugadores>')
+                    ]);
+
+
+        // attach the admin application to the DOM and run it
+        admin
+          .addEntity(team)
+          .addEntity(match)
+          .addEntity(fecha)
+          .addEntity(player)
+          .addEntity(goles)
+          .addEntity(tarjetas);
+
+
+        nga.configure(admin);
+    }]);
+    </script>
+    <script type="text/javascript" src="bower_components/bower_components/angular-resource/angular-resource.js"></script>
+    <script type="text/javascript" src="app/services/lb-services.js"></script>
+    <script type="text/javascript" src="app/directives/directives.js"></script>
+  </body>
+</html>

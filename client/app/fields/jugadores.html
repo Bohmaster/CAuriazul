@@ -1,0 +1,27 @@
+<div class="wrapper" style="height: 200px; position: relative; width:100;">
+  <div style="width:50%; float:left" ng-repeat="equipo in equipos">
+    <h2>{{equipo.values.nombre}}
+       <span ng-show="$index == 0 && partido.terminado">{{partido.resultadoLocal}}</span>
+       <span ng-show="$index == 1 && partido.terminado">{{partido.resultadoVisitante}}</span>
+    </h2>
+    <ul>
+      <li ng-repeat="p in equipo.values.jugadores" ng-click="editarJugador(p.id, p.nombre, p.equipoId)">
+        {{ p.nombre }}
+      </li>
+    </ul>
+  </div>
+
+</div>
+<div style="width: 50%; float:left; position: relative; bottom: 0px;">
+  <h3>Goles</h3>
+  <span ng-repeat="g in goles">
+    {{g.minuto}}' / {{g.jugador.nombre}}({{g.jugador.nombreEquipo}})
+  </span>
+</div>
+
+<div style="width: 50%; float:left; position: relative; bottom: 0px;">
+  <h3>Sanciones</h3>
+  <span ng-repeat="s in sanciones">
+    {{s.tipo}} {{s.jugador.nombre}}({{s.jugador.nombreEquipo}})
+  </span>
+</div>

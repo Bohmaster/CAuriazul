@@ -1,0 +1,37 @@
+{
+  "name": "Jugador",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nombre": {
+      "type": "string"
+    },
+    "categoria": {
+      "type": "string"
+    },
+    "nombreEquipo": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "equipo": {
+      "type": "belongsTo",
+      "model": "Equipo"
+    },
+    "goles": {
+      "type": "hasMany",
+      "model": "Gol"
+    },
+    "tarjetas": {
+      "type": "hasMany",
+      "model": "Tarjeta"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

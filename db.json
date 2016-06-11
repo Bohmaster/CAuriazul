@@ -1,0 +1,47 @@
+{
+  "ids": {
+    "User": 1,
+    "AccessToken": 1,
+    "ACL": 1,
+    "RoleMapping": 1,
+    "Role": 1,
+    "Fecha": 1,
+    "Partido": 6,
+    "Equipo": 3,
+    "Jugador": 7,
+    "Gol": 20,
+    "Tarjeta": 4
+  },
+  "models": {
+    "User": {},
+    "AccessToken": {},
+    "ACL": {},
+    "RoleMapping": {},
+    "Role": {},
+    "Fecha": {},
+    "Partido": {
+      "5": "{\"dia\":\"2016-05-19T00:00:00.000Z\",\"resultadoLocal\":2,\"resultadoVisitante\":0,\"terminado\":true,\"localId\":1,\"visitanteId\":2,\"id\":5}"
+    },
+    "Equipo": {
+      "1": "{\"nombre\":\"Rosario central\",\"id\":1,\"jugados\":4,\"puntos\":12}",
+      "2": "{\"nombre\":\"Newell's Old Boys\",\"id\":2,\"jugados\":4}"
+    },
+    "Jugador": {
+      "1": "{\"nombre\":\"Ramiro Trovant\",\"equipoId\":1,\"id\":1}",
+      "2": "{\"nombre\":\"Giuliano Sabia\",\"equipoId\":2,\"id\":2}",
+      "3": "{\"nombre\":\"Gustavo Trovant\",\"categoria\":\"string\",\"id\":3,\"equipoId\":1}",
+      "4": "{\"nombre\":\"Virgina Trovant\",\"categoria\":\"string\",\"id\":4,\"equipoId\":1}",
+      "5": "{\"nombre\":\"Eugenia Trovant\",\"categoria\":\"string\",\"id\":5,\"equipoId\":1}",
+      "6": "{\"nombre\":\"Toto Trovant\",\"categoria\":\"string\",\"nombreEquipo\":\"Rosario central\",\"id\":6,\"equipoId\":1}"
+    },
+    "Gol": {
+      "18": "{\"minuto\":\"22\",\"partidoId\":5,\"jugadorId\":1,\"id\":18}",
+      "19": "{\"minuto\":\"46\",\"partidoId\":5,\"jugadorId\":3,\"id\":19}"
+    },
+    "Tarjeta": {
+      "1": "{\"tipo\":\"amarilla\",\"partidoId\":1,\"jugadorId\":1,\"id\":1}",
+      "2": "{\"tipo\":\"amarilla\",\"partidoId\":4,\"jugadorId\":4,\"id\":2}",
+      "3": "{\"tipo\":\"amarilla\",\"partidoId\":5,\"jugadorId\":1,\"id\":3}"
+    }
+  }
+}

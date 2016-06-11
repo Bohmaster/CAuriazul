@@ -1,0 +1,51 @@
+{
+  "name": "Partido",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "dia": {
+      "type": "date"
+    },
+    "resultadoLocal": {
+      "type": "number",
+      "default": 0
+    },
+    "resultadoVisitante": {
+      "type": "number",
+      "default": 0
+    },
+    "terminado": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "fecha": {
+      "type": "belongsTo",
+      "model": "Fecha"
+    },
+    "local": {
+      "type": "belongsTo",
+      "model": "Equipo"
+    },
+    "visitante": {
+      "type": "belongsTo",
+      "model": "Equipo"
+    },
+    "goles": {
+      "type": "hasMany",
+      "model": "Gol"
+    },
+    "tarjetas": {
+      "type": "hasMany",
+      "model": "Tarjeta"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

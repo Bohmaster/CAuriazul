@@ -1,0 +1,23 @@
+{
+  "name": "Fecha",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "numero": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "partidos": {
+      "type": "hasMany",
+      "model": "Partido"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
